@@ -44,6 +44,7 @@ module top_module(
                 C6:out_byte<={out_byte[7:6], in, out_byte[4:0]};
                 C7:out_byte<={out_byte[7], in, out_byte[5:0]};
                 C8:out_byte<={in, out_byte[6:0]};
+		
                 default:out_byte<=out_byte;
             endcase
         end
@@ -53,3 +54,5 @@ module top_module(
    
 
 endmodule
+
+//这个需要注意的是如果8个bit全部收到了，下一个不是1的时候，需要等待一个1，才能继续进行数据的接收，不能直接开始寻找下一串数据，所以必须要有SEARCH_ED状态
